@@ -1,4 +1,3 @@
-// components/Chatbot.js
 "use client";
 
 import { useState } from 'react';
@@ -19,7 +18,9 @@ const Chatbot = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ message: userInput }),
+        body: JSON.stringify({
+          message: `Please provide a detailed, structured response: "${userInput}". Do not include "*" symbols and make it short and just give me a simple paragraph or two`,
+        }),
       });
 
       const data = await response.json();
