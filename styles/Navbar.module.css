@@ -1,0 +1,49 @@
+/* styles/Navbar.module.css */
+
+.navbar {
+  width: 100%;
+  padding: 1rem 2rem;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo a {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #6366f1;
+  transition: color 0.3s;
+}
+
+.logo a:hover {
+  color: #4f46e5;
+}
+
+.navLinks a {
+  margin-right: 1.5rem;
+  font-size: 1rem;
+  color: #4a5568;
+  transition: color 0.3s;
+}
+
+.navLinks a:hover {
+  color: #1a202c;
+}
+
+.logoutButton {
+  background: none;
+  border: none;
+  color: #c53030;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.logoutButton:hover {
+  color: #9b2c2c;
+}
