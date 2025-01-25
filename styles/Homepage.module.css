@@ -1,0 +1,36 @@
+.container {
+    padding: 2rem;
+    font-family: Arial, sans-serif;
+}
+  
+.title {
+    text-align: center;
+    margin-bottom: 2rem;
+    color:#155;
+}
+  
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+}
+  
+.card {
+    background: #f9f9f9;
+    padding: 2rem;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Move card up slightly on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slightly larger shadow on hover */
+  }
+  
+.card h3 {
+    margin: 0;
+    font-size: 1rem;
+}
