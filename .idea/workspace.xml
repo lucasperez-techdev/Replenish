@@ -4,30 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bdcc2e79-5efb-40b9-b2e1-3a5332e687b2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/(auth)/login/page.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(auth)/register/page.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(auth)/reset-password/page.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(root)/homepage/page.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/page.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/AuthForm.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/Message.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/Navbar.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/context/AuthContext.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/firebase/firebaseConfig.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/AuthForm.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/Navbar.module.css" afterDir="false" />
+    <list default="true" id="bdcc2e79-5efb-40b9-b2e1-3a5332e687b2" name="Changes" comment="Added firebase user login, register, forgot password.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(auth)/layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/layout.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(auth)/sign-in/page.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(auth)/sign-up/page.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(root)/layout.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(root)/page.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/globals.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,11 +77,24 @@
       <updated>1737820381025</updated>
       <workItem from="1737820386078" duration="941000" />
       <workItem from="1737830838178" duration="96000" />
-      <workItem from="1737830944011" duration="4450000" />
+      <workItem from="1737830944011" duration="4888000" />
     </task>
+    <task id="LOCAL-00001" summary="Added firebase user login, register, forgot password.">
+      <option name="closed" value="true" />
+      <created>1737835723192</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1737835723192</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added firebase user login, register, forgot password." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added firebase user login, register, forgot password." />
   </component>
 </project>
