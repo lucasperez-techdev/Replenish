@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { auth } from '../../../firebase/firebaseConfig';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
-import "../../../styles/Homepage.module.css";
+import styles from "../../../styles/Homepage.module.css";
 
 const Homepage = () => {
   const [currentUser, setCurrentUser] = useState(null); // For authenticated user
@@ -45,7 +45,7 @@ const Homepage = () => {
   // Function to render user cards
   const renderUserCards = (users) => {
     return users.map(user => (
-      <div key={user.id} className="card">
+      <div key={user.id} className={styles.card}> {/* Use styles.card */}
         <h3>{user.name}</h3>
       </div>
     ));
@@ -55,8 +55,8 @@ const Homepage = () => {
     <div className="container"> {/* Corrected 'classname' to 'className' */}
       <h1>Welcome, {currentUser.displayName || 'User'}!</h1>
       {/* Add more homepage content here */}
-      <h2 className="subtitle">Potential traders:</h2>
-      <div className="grid">{renderUserCards(users)}</div> {/* Changed 'mockUsers' to 'users' */}
+      <h2 className={styles.subtitle}>Potential traders:</h2> {/* Use styles.subtitle */}
+      <div className={styles.grid}>{renderUserCards(users)}</div> {/* Use styles.grid */}
     </div>
   );
 };

@@ -1,5 +1,7 @@
 /* app/globals.css */
-
+   @import 'tailwindcss/base';
+   @import 'tailwindcss/components';
+   @import 'tailwindcss/utilities';
 /* Reset and Base Styles */
 * {
   margin: 0;
