@@ -2,6 +2,7 @@
 import './globals.css';
 import { AuthProvider } from '../context/AuthContext';
 import Navbar from '../components/Navbar';
+import Chatbot from '../components/Chatbot';
 
 export default function RootLayout({ children }) {
   return (
@@ -10,6 +11,7 @@ export default function RootLayout({ children }) {
         <AuthProvider>
           <Navbar />
           {children}
+          <Chatbot />
         </AuthProvider>
       </body>
     </html>

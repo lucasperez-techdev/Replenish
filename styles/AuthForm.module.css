@@ -26,17 +26,20 @@
 }
 
 .formGroup {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem; /* Increased margin for better spacing */
   position: relative;
 }
 
 .formGroup input {
   width: 100%;
-  padding: 0.75rem 0.75rem 0.75rem 2.5rem;
+  padding: 1rem 0.75rem 0.75rem 2.5rem; /* Increased top padding to accommodate floating label */
   border: 1px solid #cbd5e0;
   border-radius: 8px;
   background-color: #f9fafb;
-  transition: border-color 0.3s;
+  transition: border-color 0.3s, padding 0.3s;
+  font-size: 1rem;
+  height: 50px; /* Fixed height for consistent vertical alignment */
+  box-sizing: border-box;
 }
 
 .formGroup input:focus {
@@ -46,17 +49,25 @@
 
 .formGroup label {
   position: absolute;
-  left: 2.5rem;
-  top: 50%;
+  left: 0.5rem; /* Align with input padding-left */
+  top: 60%;
   transform: translateY(-50%);
   pointer-events: none;
   color: #a0aec0;
-  transition: color 0.3s;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background-color: transparent; /* Prevent label background from covering input content */
+  padding: 0 0.25rem; /* Slight padding for better readability */
 }
 
 .formGroup input:focus + label,
 .formGroup input:not(:placeholder-shown) + label {
+  top: -0.09rem; /* Move label above the input */
+  left: 2.5rem; /* Maintain alignment with the icon */
+  transform: translateY(0);
+  font-size: 0.8rem;
   color: #6366f1;
+  background-color: #ffffff; /* Add background to prevent overlap */
 }
 
 .btn {
