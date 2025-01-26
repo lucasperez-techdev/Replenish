@@ -289,3 +289,19 @@
   }
 }
 
+.authButton {
+  border: 2px solid #6366f1; /* Adds a border around the button */
+  border-radius: 8px; /* Rounds the corners */
+  padding: 0.5rem 1rem; /* Adjusts spacing inside the button */
+  color: #6366f1; /* Text color matching the border */
+  background-color: transparent; /* Transparent background */
+  font-weight: 700; /* Bold text */
+  font-size: 1rem; /* Font size */
+  text-decoration: none; /* Removes underline for links */
+  transition: all 0.3s ease; /* Smooth hover effects */
+}
+
+.authButton:hover {
+  background-color: #6366f1; /* Adds a background on hover */
+  color: #ffffff; /* Changes text color to white */
+}
