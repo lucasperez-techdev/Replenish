@@ -1,0 +1,27 @@
+.chatList {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+/* For your messages vs. the other person's */
+.messageItem {
+  margin: 4px 0;
+  border-radius: 8px;
+  padding: 6px 10px;
+  max-width: 70%;
+}
+
+.ownMessage {
+  background-color: #e3f2fd; /* Light blue background for your messages */
+  margin-left: auto;         /* Push them to the right side */
+}
+
+.otherMessage {
+  background-color: #f1f1f1; /* Gray background for the other user's messages */
+  margin-right: auto;        /* Push them to the left side */
+}
+
+.textField {
+  flex: 1;
+  margin-right: 8px;
+}

@@ -11,6 +11,65 @@
 }
 
 /* Styling for the authentication form */
+/* Two-column container */
+.authContainer {
+  display: flex;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f7f7f7 50%, #000000 50%);
+}
+
+/* Left section: large logo, motto, etc. */
+.leftSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-top: -50px;
+  background: transparent;
+  padding: 2rem;
+}
+
+/* Right section: place the login/register form here */
+.rightSection {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  padding: 2rem;
+}
+
+/* Large logo styling */
+.largeLogo {
+  max-width: 700px; /* Adjust as needed */
+  height: auto;
+  margin-bottom: -15rem;
+  animation: bounceIn 0.8s ease-out;
+}
+
+/* Motto styling */
+.motto {
+  font-size: 1.25rem;
+  color: #333;
+  text-align: center;
+  max-width: 80%;
+  margin: 0 auto;
+  line-height: 1.4;
+}
+
+/* (Below are your existing classes that style the form) */
+.authForm {
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Keep the rest of your original .formGroup, .btn, etc. rules here... */
+
+
 .authForm {
   width: 100%;
   max-width: 400px;
@@ -203,3 +262,20 @@
   width: 100px;
   height: 100px;
 }
+
+/* Example Keyframes: bounceIn */
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
