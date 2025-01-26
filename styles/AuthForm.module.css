@@ -1,13 +1,16 @@
 /* styles/AuthForm.module.css */
 
+/* Container for the entire authentication form */
 .authWrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: calc(100vh - 64px); /* Adjust for Navbar height if any */
+  min-height: 100vh; /* Full viewport height */
   padding: 1rem;
+  background-color: #f4f6f8; /* Light background for contrast */
 }
 
+/* Styling for the authentication form */
 .authForm {
   width: 100%;
   max-width: 400px;
@@ -18,6 +21,7 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* Header of the form */
 .formHeader {
   text-align: center;
   margin-bottom: 1.5rem;
@@ -25,51 +29,90 @@
   color: #1a202c;
 }
 
+/* Container for each form group */
 .formGroup {
-  margin-bottom: 1.5rem; /* Increased margin for better spacing */
   position: relative;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
 }
 
+/* Styling for input fields */
 .formGroup input {
   width: 100%;
-  padding: 1rem 0.75rem 0.75rem 0.5rem; /* Increased top padding to accommodate floating label */
+  padding: 0.75rem 0.75rem 0.75rem 0.5rem; /* Padding left for icons */
   border: 1px solid #cbd5e0;
   border-radius: 8px;
   background-color: #f9fafb;
-  transition: border-color 0.3s, padding 0.3s;
+  transition: border-color 0.3s;
   font-size: 1rem;
-  height: 50px; /* Fixed height for consistent vertical alignment */
+  height: 50px;
   box-sizing: border-box;
 }
 
+/* Focus state for input fields */
 .formGroup input:focus {
   border-color: #6366f1;
   outline: none;
 }
 
+/* Styling for labels */
 .formGroup label {
   position: absolute;
-  left: 0.5rem; /* Align with input padding-left */
+  left: 0.5rem;
   top: 60%;
   transform: translateY(-50%);
   pointer-events: none;
   color: #a0aec0;
   font-size: 1rem;
   transition: all 0.3s ease;
-  background-color: transparent; /* Prevent label background from covering input content */
-  padding: 0 0.25rem; /* Slight padding for better readability */
+  background-color: transparent;
+  padding: 0 0.25rem;
 }
 
+/* Active state for labels */
 .formGroup input:focus + label,
 .formGroup input:not(:placeholder-shown) + label {
-  top: -0.09rem; /* Move label above the input */
-  left: 2.5rem; /* Maintain alignment with the icon */
-  transform: translateY(0);
+  top: -0.5rem;
+  left: 2.5rem;
   font-size: 0.8rem;
   color: #6366f1;
-  background-color: #ffffff; /* Add background to prevent overlap */
+  background-color: #ffffff;
 }
 
+/* Styling for SVG Icons */
+.icon {
+  margin-left: -25px; /* Space between icon and input */
+  margin-right: 4px;
+  margin-top: -2px; /* Move icon slightly higher */
+}
+
+/* Styling for the upload button */
+.uploadButton {
+  padding: 0.5rem 1rem;
+  margin-left: 1rem; /* Space between icon and button */
+  border: 1px solid #cbd5e0;
+  border-radius: 8px;
+  background-color: #f9fafb;
+  cursor: pointer;
+  transition: border-color 0.3s, background-color 0.3s;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+/* Hover state for the upload button */
+.uploadButton:hover {
+  border-color: #6366f1;
+  background-color: #e5e7eb;
+}
+
+/* Hidden file input */
+.hiddenFileInput {
+  display: none;
+}
+
+/* Styling for the register button */
 .btn {
   width: 100%;
   padding: 0.75rem;
@@ -82,10 +125,18 @@
   transition: background-color 0.3s;
 }
 
+/* Hover state for the register button */
 .btn:hover {
   background-color: #4f46e5;
 }
 
+/* Disabled state for the register button */
+.btn:disabled {
+  background-color: #a5b4fc;
+  cursor: not-allowed;
+}
+
+/* Separator styling */
 .separator {
   text-align: center;
   margin: 1.5rem 0;
@@ -112,6 +163,7 @@
   z-index: 0;
 }
 
+/* Toggle authentication section */
 .toggleAuth {
   text-align: center;
 }
@@ -134,49 +186,19 @@
   color: #4f46e5;
 }
 
-.alertMessage {
-  padding: 0.75rem;
+/* Profile picture preview container */
+.previewContainer {
+  margin-top: 1rem;
   margin-bottom: 1rem;
-  border-radius: 8px;
-  display: block;
-  font-size: 0.9rem;
-  animation: fadeIn 0.5s, fadeOut 0.5s 4.5s;
+  display: flex;
+  justify-content: center;
 }
 
-.error {
-  background-color: #fef2f2;
-  color: #c53030;
-}
-
-.success {
-  background-color: #f0fff4;
-  color: #38a169;
-}
-
-.fadeOut {
-  opacity: 0;
-  transition: opacity 0.5s ease-out;
-}
-
-.recoverPassword {
-  display: block;
-  text-align: right;
-  font-size: 0.9rem;
-  color: #6366f1;
-  transition: color 0.3s;
-}
-
-.recoverPassword:hover {
-  color: #4f46e5;
-}
-
-/* Keyframes for fade in and fade out */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes fadeOut {
-  from { opacity: 1; }
-  to { opacity: 0; }
+/* Profile picture preview image */
+.profilePreview {
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #6366f1;
+  width: 100px;
+  height: 100px;
 }
