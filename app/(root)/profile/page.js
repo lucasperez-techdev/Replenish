@@ -14,10 +14,12 @@ export default function ProfilePage() {
 		email: "",
 		phone: "",
 		profilePicture: "",
-		resources: [],
+		resourcesNeeded: [],
+		resourcesHave: [],
 	});
 	const [loading, setLoading] = useState(true);
-	const [newResource, setNewResource] = useState("");
+	const [newResourceNeeded, setNewResourceNeeded] = useState("");
+	const [newResourceHave, setNewResourceHave] = useState("");
 	const [profilePictureFile, setProfilePictureFile] = useState(null);
 
 	const storage = getStorage();
@@ -32,7 +34,8 @@ export default function ProfilePage() {
 					setProfile({
 						...profile,
 						...docSnap.data(),
-						resources: docSnap.data().resources || [],
+						resourcesNeeded: docSnap.data().resourcesNeeded || [],
+						resourcesHave: docSnap.data().resourcesHave || [],
 					});
 				}
 			} else {
@@ -48,17 +51,31 @@ export default function ProfilePage() {
 		setProfile((prev) => ({ ...prev, [name]: value }));
 	};
 
-	const handleAddResource = () => {
-		if (newResource.trim() !== "") {
-			setProfile((prev) => ({ ...prev, resources: [...(prev.resources || []), newResource] }));
-			setNewResource("");
+	const handleAddResourceNeeded = () => {
+		if (newResourceNeeded.trim() !== "") {
+			setProfile((prev) => ({ ...prev, resourcesNeeded: [...(prev.resourcesNeeded || []), newResourceNeeded] }));
+			setNewResourceNeeded("");
 		}
 	};
 
-	const handleRemoveResource = (index) => {
+	const handleAddResourceHave = () => {
+		if (newResourceHave.trim() !== "") {
+			setProfile((prev) => ({ ...prev, resourcesHave: [...(prev.resourcesHave || []), newResourceHave] }));
+			setNewResourceHave("");
+		}
+	};
+
+	const handleRemoveResourceNeeded = (index) => {
 		setProfile((prev) => ({
 			...prev,
-			resources: (prev.resources || []).filter((_, i) => i !== index),
+			resourcesNeeded: (prev.resourcesNeeded || []).filter((_, i) => i !== index),
+		}));
+	};
+
+	const handleRemoveResourceHave = (index) => {
+		setProfile((prev) => ({
+			...prev,
+			resourcesHave: (prev.resourcesHave || []).filter((_, i) => i !== index),
 		}));
 	};
 
@@ -75,7 +92,11 @@ export default function ProfilePage() {
 		if (user) {
 			const docRef = doc(db, "users", user.uid);
 			try {
-				const updatedProfile = { ...profile, resources: profile.resources || [] };
+				const updatedProfile = {
+					...profile,
+					resourcesNeeded: profile.resourcesNeeded || [],
+					resourcesHave: profile.resourcesHave || [],
+				};
 				await setDoc(docRef, updatedProfile, { merge: true });
 				alert("Profile updated successfully!");
 			} catch (error) {
@@ -160,13 +181,13 @@ export default function ProfilePage() {
 					)}
 				</div>
 				<div>
-					<label className="block text-sm font-medium text-gray-700">Resources</label>
+					<label className="block text-sm font-medium text-gray-700">Resources Needed</label>
 					<div className="space-y-2">
-						{(profile.resources || []).map((resource, index) => (
+						{(profile.resourcesNeeded || []).map((resource, index) => (
 							<div key={index} className="flex items-center space-x-2">
 								<span className="flex-1">{resource}</span>
 								<button
-									onClick={() => handleRemoveResource(index)}
+									onClick={() => handleRemoveResourceNeeded(index)}
 									className="text-red-500 hover:underline"
 								>
 									Remove
@@ -177,12 +198,42 @@ export default function ProfilePage() {
 					<div className="flex items-center space-x-2 mt-2">
 						<input
 							type="text"
-							value={newResource}
-							onChange={(e) => setNewResource(e.target.value)}
+							value={newResourceNeeded}
+							onChange={(e) => setNewResourceNeeded(e.target.value)}
 							className="flex-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
 						/>
 						<button
-							onClick={handleAddResource}
+							onClick={handleAddResourceNeeded}
+							className="px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300"
+						>
+							Add
+						</button>
+					</div>
+				</div>
+				<div>
+					<label className="block text-sm font-medium text-gray-700">Resources Have</label>
+					<div className="space-y-2">
+						{(profile.resourcesHave || []).map((resource, index) => (
+							<div key={index} className="flex items-center space-x-2">
+								<span className="flex-1">{resource}</span>
+								<button
+									onClick={() => handleRemoveResourceHave(index)}
+									className="text-red-500 hover:underline"
+								>
+									Remove
+								</button>
+							</div>
+						))}
+					</div>
+					<div className="flex items-center space-x-2 mt-2">
+						<input
+							type="text"
+							value={newResourceHave}
+							onChange={(e) => setNewResourceHave(e.target.value)}
+							className="flex-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
+						/>
+						<button
+							onClick={handleAddResourceHave}
 							className="px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300"
 						>
 							Add
