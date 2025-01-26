@@ -1,3 +1,4 @@
+
 // app/login/page.js
 'use client';
 
@@ -5,33 +6,31 @@ import { useState } from 'react';
 import { auth } from '../../../firebase/firebaseConfig';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
-import Message from '../../../components/Message';
 import styles from '../../../styles/AuthForm.module.css';
 import Image from 'next/image';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPopup, setShowPopup] = useState(false);
+  const [popupMessage, setPopupMessage] = useState('');
 
-  const [message, setMessage] = useState({ text: '', type: '' });
   const router = useRouter();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     if (!email || !password) {
-      setMessage({ text: 'Please enter both email and password.', type: 'error' });
+      setPopupMessage('Please enter both email and password.');
+      setShowPopup(true);
+      setTimeout(() => setShowPopup(false), 3000);
       return;
     }
 
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
-      setMessage({ text: 'Login successful!', type: 'success' });
-      // Store user ID in localStorage
       localStorage.setItem('loggedInUserId', user.uid);
-      setTimeout(() => {
-        router.push('/homepage'); // Ensure you have a homepage.js in app/
-      }, 2000);
+      router.push('/homepage');
     } catch (error) {
       console.error("Error during login:", error);
       let errorMsg = 'Login failed. Please try again.';
@@ -40,7 +39,9 @@ const Login = () => {
       } else if (error.code === 'auth/invalid-email') {
         errorMsg = 'Invalid email address.';
       }
-      setMessage({ text: errorMsg, type: 'error' });
+      setPopupMessage(errorMsg);
+      setShowPopup(true);
+      setTimeout(() => setShowPopup(false), 3000);
     }
   };
 
@@ -48,7 +49,6 @@ const Login = () => {
     <div className={styles.authWrapper}>
       <div className={styles.authForm}>
         <h2 className={styles.formHeader}>Login</h2>
-        {message.text && <Message message={message.text} type={message.type} onClose={() => setMessage({ text: '', type: '' })} />}
         <form onSubmit={handleLogin}>
           <div className={styles.formGroup}>
             <Image src="/svgs/envelope.svg" alt="Envelope Icon" width={20} height={20} className={styles.icon} />
@@ -87,6 +87,12 @@ const Login = () => {
           <button onClick={() => router.push('/register')}>Register Now</button>
         </div>
       </div>
+      {showPopup && (
+        <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-red-500 text-white px-4 py-2 rounded-lg shadow-md flex items-center space-x-2 animate-pulse">
+          <span>&#9888;</span>
+          <span>{popupMessage}</span>
+        </div>
+      )}
     </div>
   );
 };
