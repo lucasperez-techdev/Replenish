@@ -16,8 +16,8 @@ export default async function handler(req, res) {
   const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
 
   try {
-    const match = message.match(/who has (.+?)\?/i);
-    const requestedResource = match ? match[1].trim() : null;
+    let match = message.match(/who has (.+?)\?|what business has (.+?)\?/i);
+    const requestedResource = match ? (match[1] || match[2]).trim() : null;
 
     let userDataSummary = "No relevant data found in the database.";
 
@@ -35,7 +35,7 @@ export default async function handler(req, res) {
         querySnapshot.forEach((doc) => {
           const user = doc.data();
           matchingUsers.push({
-            name: `${user.firstName} ${user.lastName}`,
+            name: `${user.businessName}`,
             resourcesHave: user.resourcesHave,
             resourcesNeeded: user.resourcesNeeded,
           });
