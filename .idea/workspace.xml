@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bdcc2e79-5efb-40b9-b2e1-3a5332e687b2" name="Changes" comment="Added firebase user login, register, forgot password.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="bdcc2e79-5efb-40b9-b2e1-3a5332e687b2" name="Changes" comment="Added firebase user login, register, forgot password." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -44,6 +42,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "KalimBranch",
+    "last_opened_file_path": "C:/Users/kalim/PycharmProjects/Replenish",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -78,6 +77,7 @@
       <workItem from="1737820386078" duration="941000" />
       <workItem from="1737830838178" duration="96000" />
       <workItem from="1737830944011" duration="4888000" />
+      <workItem from="1737855668351" duration="2416000" />
     </task>
     <task id="LOCAL-00001" summary="Added firebase user login, register, forgot password.">
       <option name="closed" value="true" />

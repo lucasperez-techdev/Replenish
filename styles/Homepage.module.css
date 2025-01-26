@@ -1,3 +1,4 @@
+/* styles/Hompage.module.css */
 .container {
     padding: 2rem;
     font-family: Arial, sans-serif;
@@ -36,4 +37,32 @@
 .card h3 {
     margin: 0;
     font-size: 1rem;
+}
+
+/* h1 {
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    text-align: center;
+    margin-bottom: 2rem;
+} */
+
+.card ul {
+    list-style-type: disc;
+    margin: 0;
+    padding-left: 1.5rem;
+}
+
+.card h4 {
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: #555;
+}
+
+.card li {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    color: #333;
 }
