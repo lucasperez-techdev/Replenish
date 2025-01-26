@@ -1,5 +1,3 @@
-
-// app/login/page.js
 'use client';
 
 import { useState } from 'react';
@@ -46,53 +44,71 @@ const Login = () => {
   };
 
   return (
-    <div className={styles.authWrapper}>
-      <div className={styles.authForm}>
-        <h2 className={styles.formHeader}>Login</h2>
-        <form onSubmit={handleLogin}>
-          <div className={styles.formGroup}>
-            <Image src="/svgs/envelope.svg" alt="Envelope Icon" width={20} height={20} className={styles.icon} />
-            <input
-              type="email"
-              id="loginEmail"
-              placeholder=" "
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-            <label htmlFor="loginEmail">Email Address</label>
-          </div>
-          <div className={styles.formGroup}>
-            <Image src="/svgs/lock.svg" alt="Lock Icon" width={20} height={20} className={styles.icon} />
-            <input
-              type="password"
-              id="loginPassword"
-              placeholder=" "
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-            <label htmlFor="loginPassword">Password</label>
-          </div>
-          <div className={styles.formGroup}>
-            <a href="/reset-password" className={styles.recoverPassword}>Forgot Password?</a>
-          </div>
-          <button type="submit" className={styles.btn}>Login</button>
-        </form>
-        <div className={styles.separator}>
-          <span>OR</span>
-        </div>
-        <div className={styles.toggleAuth}>
-          <p>Don't have an account?</p>
-          <button onClick={() => router.push('/register')}>Register Now</button>
-        </div>
+    <div className={styles.authContainer}>
+      {/** LEFT SECTION **/}
+      <div className={styles.leftSection}>
+        {/* Example: big PNG logo + motto */}
+        <Image
+          src="/images/ZeroSum.png"
+          alt="Zero-Sum Logo"
+          width={700}
+          height={500}
+          className={styles.largeLogo}
+        />
+        <p className={styles.motto}>ZERO-SUM, WHERE BUSINESSES BENEFIT.</p>
       </div>
-      {showPopup && (
-        <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-red-500 text-white px-4 py-2 rounded-lg shadow-md flex items-center space-x-2 animate-pulse">
-          <span>&#9888;</span>
-          <span>{popupMessage}</span>
+
+      {/** RIGHT SECTION **/}
+      <div className={styles.rightSection}>
+        <div className={styles.authForm}>
+          <h2 className={styles.formHeader}>Login</h2>
+          <form onSubmit={handleLogin}>
+            <div className={styles.formGroup}>
+              <Image src="/svgs/envelope.svg" alt="Envelope Icon" width={20} height={20} className={styles.icon} />
+              <input
+                type="email"
+                id="loginEmail"
+                placeholder=" "
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+              <label htmlFor="loginEmail">Email Address</label>
+            </div>
+            <div className={styles.formGroup}>
+              <Image src="/svgs/lock.svg" alt="Lock Icon" width={20} height={20} className={styles.icon} />
+              <input
+                type="password"
+                id="loginPassword"
+                placeholder=" "
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <label htmlFor="loginPassword">Password</label>
+            </div>
+            <div className={styles.formGroup}>
+              <a href="/reset-password" className={styles.recoverPassword}>Forgot Password?</a>
+            </div>
+            <button type="submit" className={styles.btn}>Login</button>
+          </form>
+          <div className={styles.separator}>
+            <span>OR</span>
+          </div>
+          <div className={styles.toggleAuth}>
+            <p>Don&apos;t have an account?</p>
+            <button onClick={() => router.push('/register')}>Register Now</button>
+          </div>
         </div>
-      )}
+
+        {/* Popup for errors */}
+        {showPopup && (
+          <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-red-500 text-white px-4 py-2 rounded-lg shadow-md flex items-center space-x-2 animate-pulse">
+            <span>&#9888;</span>
+            <span>{popupMessage}</span>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

@@ -16,17 +16,29 @@ export default async function handler(req, res) {
   const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
 
   try {
-    let match = message.match(/who has (.+?)\?|what business has (.+?)\?/i);
-    const requestedResource = match ? (match[1] || match[2]).trim() : null;
+    // Enhanced regex to capture various prompts
+    let match = message.match(/who has (.+?)\?|what business has (.+?)\?|who needs (.+?)\?|what business needs (.+?)\?/i);
+    const requestedResource = match ? (match[1] || match[2] || match[3] || match[4]).trim() : null;
 
     let userDataSummary = "No relevant data found in the database.";
+    let queryField = null; // Field to query in Firestore (resourcesHave or resourcesNeeded)
 
     if (requestedResource) {
       console.log('Requested Resource:', requestedResource);
 
+      // Determine the appropriate Firestore field based on the query
+      if (match[1] || match[2]) {
+        queryField = 'resourcesHave'; // For "has" prompts
+      } else if (match[3] || match[4]) {
+        queryField = 'resourcesNeeded'; // For "needs" prompts
+      }
+
+      console.log('Querying Field:', queryField);
+
+      // Query Firestore based on the extracted resource and field
       const q = query(
         collection(db, 'users'),
-        where('resourcesHave', 'array-contains', requestedResource)
+        where(queryField, 'array-contains', requestedResource) // Adjust field dynamically
       );
       const querySnapshot = await getDocs(q);
 
@@ -35,7 +47,7 @@ export default async function handler(req, res) {
         querySnapshot.forEach((doc) => {
           const user = doc.data();
           matchingUsers.push({
-            name: `${user.businessName}`,
+            name: `${user.firstName} ${user.lastName}`,
             resourcesHave: user.resourcesHave,
             resourcesNeeded: user.resourcesNeeded,
           });
@@ -48,12 +60,13 @@ export default async function handler(req, res) {
           )
           .join('\n');
       } else {
-        userDataSummary = `No users found with the resource: "${requestedResource}".`;
+        userDataSummary = `No users or businesses found with the resource: "${requestedResource}".`;
       }
     }
 
+    // Create the AI prompt with the database data
     const customPrompt = `
-      The following is the list of user data from the database:
+      The following is the list of user and business data from the database:
       ${userDataSummary}
 
       User Question: "${message}"
@@ -63,6 +76,7 @@ export default async function handler(req, res) {
 
     console.log('Custom Prompt Sent to Gemini:', customPrompt);
 
+    // Call Gemini AI with the custom prompt
     const response = await fetch(endpoint, {
       method: 'POST',
       headers: {

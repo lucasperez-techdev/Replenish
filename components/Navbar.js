@@ -1,4 +1,4 @@
-//components/Navbar.js
+// components/Navbar.js
 'use client';
 
 import React, { useState } from 'react';
@@ -7,7 +7,7 @@ import { useAuth } from '../context/AuthContext';
 import { auth } from '../firebase/firebaseConfig';
 import { signOut } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
-import { Button, Drawer, List, ListItem, ListItemText } from '@mui/material';
+import { Button, Drawer, List, ListItem, ListItemText, ListItemButton } from '@mui/material';
 import styles from '../styles/Navbar.module.css';
 
 const Navbar = () => {
@@ -30,21 +30,43 @@ const Navbar = () => {
   };
 
   const DrawerList = (
-    <List>
-      <ListItem button onClick={() => { setDrawerOpen(false); router.push('/homepage'); }}>
+  <List className={styles.drawerList}>
+    <ListItem disablePadding className={styles.drawerItem}>
+      <ListItemButton
+        onClick={() => {
+          setDrawerOpen(false);
+          router.push('/homepage');
+        }}
+      >
         <ListItemText primary="Home" />
-      </ListItem>
-      <ListItem button onClick={() => { setDrawerOpen(false); router.push('/profile'); }}>
+      </ListItemButton>
+    </ListItem>
+
+    <ListItem disablePadding className={styles.drawerItem}>
+      <ListItemButton
+        onClick={() => {
+          setDrawerOpen(false);
+          router.push('/profile');
+        }}
+      >
         <ListItemText primary="Profile" />
-      </ListItem>
-      <ListItem button onClick={() => {
-        setDrawerOpen(false);
-        handleLogout();
-      }}>
+      </ListItemButton>
+    </ListItem>
+
+    <ListItem disablePadding className={styles.logoutItem}>
+      <ListItemButton
+        onClick={() => {
+          setDrawerOpen(false);
+          handleLogout();
+        }}
+      >
         <ListItemText primary="Logout" />
-      </ListItem>
-    </List>
-  );
+      </ListItemButton>
+    </ListItem>
+  </List>
+);
+
+
   return (
     <nav className={styles.navbar}>
       <div className={styles.logo}>
@@ -62,8 +84,8 @@ const Navbar = () => {
           </>
         ) : (
           <>
-            <Link href="/login">Login</Link>
-            <Link href="/register">Register</Link>
+            <Link href="/login" className={styles.navLink}>Login</Link>
+            <Link href="/register" className={styles.navLink}>Register</Link>
           </>
         )}
       </div>
