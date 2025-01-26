@@ -37,13 +37,31 @@ const Chatbot = () => {
 
   return (
     <div style={{ position: 'fixed', bottom: '20px', right: '20px', maxWidth: '350px', zIndex: 1000, backgroundColor: '#fff', border: '1px solid #ccc', borderRadius: '10px', boxShadow: '0px 4px 8px rgba(0,0,0,0.2)' }}>
-      <div style={{ padding: '10px', maxHeight: '400px', overflowY: 'auto' }}>
+      {/* Chatbot Header */}
+      <div style={{ backgroundColor: '#007bff', color: '#fff', padding: '10px', borderTopLeftRadius: '10px', borderTopRightRadius: '10px', fontWeight: 'bold', textAlign: 'center' }}>
+        Hi, I am ZSG, how can I assist you?
+      </div>
+      {/* Messages Section */}
+      <div style={{ padding: '10px', maxHeight: '350px', overflowY: 'auto' }}>
         {messages.map((msg, index) => (
-          <p key={index} style={{ textAlign: msg.sender === 'user' ? 'right' : 'left', padding: '8px', borderRadius: '8px', backgroundColor: msg.sender === 'user' ? '#d1e7dd' : '#f8d7da', margin: '5px' }}>
+          <p
+            key={index}
+            style={{
+              textAlign: msg.sender === 'user' ? 'right' : 'left',
+              padding: '10px',
+              borderRadius: '8px',
+              margin: '5px',
+              maxWidth: '75%',
+              backgroundColor: msg.sender === 'user' ? '#add8e6' : '#fff', // User messages are blue, bot messages are white
+              boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)',
+              marginLeft: msg.sender === 'user' ? 'auto' : '0', // Shifts user messages to the right
+            }}
+          >
             {msg.text}
           </p>
         ))}
       </div>
+      {/* Input Section */}
       <div style={{ display: 'flex', padding: '10px', borderTop: '1px solid #ccc' }}>
         <input
           type="text"
