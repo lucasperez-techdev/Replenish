@@ -1,7 +1,7 @@
 // app/root/profile/page.js
 'use client'
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { auth, db } from "../../../firebase/firebaseConfig";
 import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
@@ -19,10 +19,13 @@ export default function ProfilePage() {
 		resourcesHave: [],
 	});
 	const [loading, setLoading] = useState(true);
+	const [saving, setSaving] = useState(false);
 	const [newResourceNeeded, setNewResourceNeeded] = useState("");
 	const [newResourceHave, setNewResourceHave] = useState("");
 	const [profilePictureFile, setProfilePictureFile] = useState(null);
+	const [showPopup, setShowPopup] = useState(false);
 
+	const fileInputRef = useRef(null);
 	const storage = getStorage();
 
 	useEffect(() => {
@@ -46,6 +49,10 @@ export default function ProfilePage() {
 		});
 		return () => unsubscribe();
 	}, []);
+
+	const handleButtonClick = () => {
+		fileInputRef.current.click();
+	};
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -91,6 +98,7 @@ export default function ProfilePage() {
 
 	const handleSave = async () => {
 		if (user) {
+			setSaving(true);
 			const docRef = doc(db, "users", user.uid);
 			try {
 				const updatedProfile = {
@@ -99,10 +107,13 @@ export default function ProfilePage() {
 					resourcesHave: profile.resourcesHave || [],
 				};
 				await setDoc(docRef, updatedProfile, { merge: true });
-				alert("Profile updated successfully!");
+				setShowPopup(true);
+				setTimeout(() => setShowPopup(false), 1000);
 			} catch (error) {
 				console.error("Error updating profile: ", error);
 				alert("Failed to update profile. Please try again.");
+			} finally {
+				setSaving(false);
 			}
 		}
 	};
@@ -161,25 +172,29 @@ export default function ProfilePage() {
 				</div>
 				<div>
 					<label className="block text-sm font-medium text-gray-700">Profile Picture</label>
-					<input
-						type="file"
-						accept="image/*"
-						onChange={(e) => setProfilePictureFile(e.target.files[0])}
-						className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
-					/>
-					<button
-						onClick={handleProfilePictureUpload}
-						className="mt-2 px-4 py-2 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 focus:outline-none focus:ring focus:ring-green-300"
-					>
-						Upload Picture
-					</button>
-					{profile.profilePicture && (
-						<img
-							src={profile.profilePicture}
-							alt="Profile"
-							className="mt-4 w-32 h-32 rounded-full object-cover"
+					<div className="flex items-center space-x-4">
+						<button
+							type="button"
+							onClick={handleButtonClick}
+							className="px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300"
+						>
+							Upload Profile Picture
+						</button>
+						<input
+							type="file"
+							accept="image/*"
+							ref={fileInputRef}
+							onChange={(e) => setProfilePictureFile(e.target.files[0])}
+							className="hidden"
 						/>
-					)}
+						{profile.profilePicture && (
+							<img
+								src={profile.profilePicture}
+								alt="Profile Preview"
+								className="w-20 h-20 rounded-full object-cover border border-gray-300"
+							/>
+						)}
+					</div>
 				</div>
 				<div>
 					<label className="block text-sm font-medium text-gray-700">Resources Needed</label>
@@ -243,12 +258,25 @@ export default function ProfilePage() {
 				</div>
 				<button
 					onClick={handleSave}
-					className="px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300"
+					className={`px-4 py-2 text-white font-semibold rounded-lg focus:outline-none focus:ring focus:ring-blue-300 ${saving ? 'bg-blue-400 cursor-not-allowed' : 'bg-blue-500 hover:bg-blue-600'}`}
+					disabled={saving}
 				>
-					Save Changes
+					{saving ? (
+						<div className="flex items-center space-x-2">
+							<span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+							<span>Saving...</span>
+						</div>
+					) : (
+						<span>Save Changes</span>
+					)}
 				</button>
+				{showPopup && (
+					<div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-green-500 text-white px-4 py-2 rounded-lg shadow-md flex items-center space-x-2 animate-fade">
+						<span>&#10003;</span>
+						<span>Changes saved</span>
+					</div>
+				)}
 			</div>
 		</div>
 	);
 }
-

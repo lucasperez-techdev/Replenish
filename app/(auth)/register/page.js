@@ -12,83 +12,64 @@ import styles from '../../../styles/AuthForm.module.css';
 import Image from 'next/image';
 
 const Register = () => {
-  // State variables for form fields
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
-  const [businessName, setBusinessName] = useState(''); // Business/Company Name
-  const [phoneNumber, setPhoneNumber] = useState(''); // Phone Number
+  const [businessName, setBusinessName] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [profilePictureFile, setProfilePictureFile] = useState(null); // Profile Picture file
-  const [preview, setPreview] = useState(null); // Profile Picture preview
-  const [isUploading, setIsUploading] = useState(false); // Loading state for registration
+  const [profilePictureFile, setProfilePictureFile] = useState(null);
+  const [preview, setPreview] = useState(null);
+  const [isUploading, setIsUploading] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
 
-  const [message, setMessage] = useState({ text: '', type: '' });
   const router = useRouter();
-
-  // Reference for the hidden file input
   const fileInputRef = useRef(null);
 
-  // Handler for form submission
   const handleRegistration = async (e) => {
     e.preventDefault();
 
-    // Validate required fields
     if (!email || !password || !firstName || !lastName || !businessName || !phoneNumber) {
-      setMessage({ text: 'Please fill in all required fields.', type: 'error' });
       return;
     }
 
-    setIsUploading(true); // Start loading
+    setIsUploading(true);
 
     try {
-      // Create user with email and password
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
 
       let profilePictureURL = '';
-      // If a profile picture is selected, upload it to Firebase Storage
       if (profilePictureFile) {
         const storageRef = ref(storage, `profilePictures/${user.uid}`);
         await uploadBytes(storageRef, profilePictureFile);
         profilePictureURL = await getDownloadURL(storageRef);
       }
 
-      // Prepare user data to store in Firestore
       const userData = {
         email,
         firstName,
         lastName,
-        businessName, // Add Business/Company Name
-        phoneNumber,  // Add Phone Number
-        profilePicture: profilePictureURL, // Add Profile Picture URL
+        businessName,
+        phoneNumber,
+        profilePicture: profilePictureURL,
         createdAt: new Date()
       };
 
-      // Store user data in Firestore
       await setDoc(doc(db, "users", user.uid), userData);
 
-      setMessage({ text: 'Account Created Successfully!', type: 'success' });
+      setShowPopup(true);
       setTimeout(() => {
+        setShowPopup(false);
         router.push('/homepage');
-      }, 2000);
+      }, 1500);
     } catch (error) {
       console.error("Error during registration:", error);
-      let errorMsg = 'Registration failed. Please try again.';
-      if (error.code === 'auth/email-already-in-use') {
-        errorMsg = 'Email address is already in use.';
-      } else if (error.code === 'auth/invalid-email') {
-        errorMsg = 'Invalid email address.';
-      } else if (error.code === 'auth/weak-password') {
-        errorMsg = 'Password should be at least 6 characters.';
-      }
-      setMessage({ text: errorMsg, type: 'error' });
     } finally {
-      setIsUploading(false); // End loading
+      setIsUploading(false);
     }
   };
 
-  // Handler for profile picture selection and preview
   const handleProfilePictureChange = (e) => {
     const file = e.target.files[0];
     setProfilePictureFile(file);
@@ -103,7 +84,6 @@ const Register = () => {
     }
   };
 
-  // Handler to trigger file input click
   const handleButtonClick = () => {
     fileInputRef.current.click();
   };
@@ -112,15 +92,7 @@ const Register = () => {
     <div className={styles.authWrapper}>
       <div className={styles.authForm}>
         <h2 className={styles.formHeader}>Create Account</h2>
-        {message.text && (
-          <Message
-            message={message.text}
-            type={message.type}
-            onClose={() => setMessage({ text: '', type: '' })}
-          />
-        )}
         <form id="register" onSubmit={handleRegistration}>
-          {/* First Name */}
           <div className={styles.formGroup}>
             <input
               type="text"
@@ -133,7 +105,6 @@ const Register = () => {
             <label htmlFor="firstName">First Name</label>
           </div>
 
-          {/* Last Name */}
           <div className={styles.formGroup}>
             <input
               type="text"
@@ -146,7 +117,6 @@ const Register = () => {
             <label htmlFor="lastName">Last Name</label>
           </div>
 
-          {/* Business/Company Name */}
           <div className={styles.formGroup}>
             <input
               type="text"
@@ -159,7 +129,6 @@ const Register = () => {
             <label htmlFor="businessName">Business/Company Name</label>
           </div>
 
-          {/* Phone Number */}
           <div className={styles.formGroup}>
             <Image src="/svgs/phone.svg" alt="Phone Icon" width={20} height={20} className={styles.icon} />
             <input
@@ -169,13 +138,12 @@ const Register = () => {
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
               required
-              pattern="[0-9]{10}" /* Example pattern for 10-digit phone numbers */
+              pattern="[0-9]{10}"
               title="Please enter a valid 10-digit phone number."
             />
             <label htmlFor="phoneNumber">Phone Number</label>
           </div>
 
-          {/* Email Address */}
           <div className={styles.formGroup}>
             <Image src="/svgs/envelope.svg" alt="Envelope Icon" width={20} height={20} className={styles.icon} />
             <input
@@ -189,7 +157,6 @@ const Register = () => {
             <label htmlFor="registerEmail">Email Address</label>
           </div>
 
-          {/* Password */}
           <div className={styles.formGroup}>
             <Image src="/svgs/lock.svg" alt="Lock Icon" width={20} height={20} className={styles.icon} />
             <input
@@ -203,11 +170,7 @@ const Register = () => {
             <label htmlFor="registerPassword">Password</label>
           </div>
 
-          {/* Profile Picture */}
           <div className={styles.formGroup}>
-            {/* Profile Icon */}
-
-            {/* Upload Button */}
             <button
               type="button"
               onClick={handleButtonClick}
@@ -215,8 +178,6 @@ const Register = () => {
             >
               Upload Profile Picture
             </button>
-
-            {/* Hidden File Input */}
             <input
               type="file"
               accept="image/*"
@@ -226,7 +187,6 @@ const Register = () => {
             />
           </div>
 
-          {/* Profile Picture Preview */}
           {preview && (
             <div className={styles.previewContainer}>
               <Image
@@ -239,23 +199,26 @@ const Register = () => {
             </div>
           )}
 
-          {/* Register Button */}
           <button type="submit" className={styles.btn} disabled={isUploading}>
             {isUploading ? 'Registering...' : 'Register'}
           </button>
         </form>
 
-        {/* Separator */}
         <div className={styles.separator}>
           <span>OR</span>
         </div>
 
-        {/* Toggle Authentication */}
         <div className={styles.toggleAuth}>
           <p>Already have an account?</p>
           <button onClick={() => router.push('/login')}>Login Here</button>
         </div>
       </div>
+      {showPopup && (
+        <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-green-500 text-white px-4 py-2 rounded-lg shadow-md flex items-center space-x-2 animate-fade">
+          <span>&#10003;</span>
+          <span>Account Created</span>
+        </div>
+      )}
     </div>
   );
 };
