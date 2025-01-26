@@ -42,7 +42,7 @@ const Chatbot = () => {
       {isOpen ? (
         <div
           style={{
-            maxWidth: "350px", // Fixed width for the chatbot
+            maxWidth: "370px", // Fixed width for the chatbot
             backgroundColor: "#fff",
             border: "1px solid #ccc",
             borderRadius: "10px",
@@ -65,7 +65,7 @@ const Chatbot = () => {
               position: "relative", // For positioning the close button
             }}
           >
-            Hi, I am ZSG, how can I assist you?
+            Hello I am ZSG, how can I assist you?
 
             {/* Close Button */}
             <button
