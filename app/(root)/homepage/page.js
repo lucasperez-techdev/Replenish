@@ -25,7 +25,6 @@ const Homepage = () => {
     return () => unsubscribe();
   }, [router]);
 
-  // Set mock users
   useEffect(() => {
     const users = [
       { id: 1, name: 'John Doe' },
@@ -39,25 +38,27 @@ const Homepage = () => {
     // console.log('Mock Users:', mockUsers);
   }, []);
 
-  // Show loading state until authenticated user is determined
   if (!currentUser) return <p>Loading...</p>;
 
   // Function to render user cards
   const renderUserCards = (users) => {
     return users.map(user => (
-      <div key={user.id} className={styles.card}> {/* Use styles.card */}
+      <div key={user.id} className={styles.card}> {/* styles.card */}
         <h3>{user.name}</h3>
       </div>
     ));
   };
 
   return (
-    <div className="container"> {/* Corrected 'classname' to 'className' */}
-      <h1>Welcome, {currentUser.displayName || 'User'}!</h1>
-      {/* Add more homepage content here */}
-      <h2 className={styles.subtitle}>Potential traders:</h2> {/* Use styles.subtitle */}
-      <div className={styles.grid}>{renderUserCards(users)}</div> {/* Use styles.grid */}
-    </div>
+    <div className={styles.container}>
+    <h1 style={{ textAlign: 'center', marginBottom: '0.5rem' }}>
+      Welcome, {currentUser.displayName || 'User'}!
+    </h1>
+    <h2 style={{ textAlign: 'center', marginBottom: '2rem' }}>
+      Potential traders:
+    </h2>
+    <div className={styles.grid}>{renderUserCards(users)}</div>
+  </div>
   );
 };
 
