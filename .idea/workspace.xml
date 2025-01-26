@@ -6,10 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="bdcc2e79-5efb-40b9-b2e1-3a5332e687b2" name="Changes" comment="Added firebase user login, register, forgot password.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(root)/homepage/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/(root)/homepage/page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/FlipCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/CompanyCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/FlipCard.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/CompanyCard.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/Homepage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/Homepage.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Navbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Sidebar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/Navbar.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/Navbar.module.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +62,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\kalim\PycharmProjects\Replenish\app\api" />
       <recent name="C:\Users\kalim\PycharmProjects\Replenish\public\svgs" />
       <recent name="C:\Users\kalim\OneDrive\Documents\GitHub\replenish\app\(auth)" />
       <recent name="C:\Users\kalim\OneDrive\Documents\GitHub\replenish\app\(root)" />
@@ -85,7 +87,7 @@
       <workItem from="1737830838178" duration="96000" />
       <workItem from="1737830944011" duration="4888000" />
       <workItem from="1737855668351" duration="11388000" />
-      <workItem from="1737870454128" duration="3236000" />
+      <workItem from="1737870454128" duration="9024000" />
     </task>
     <task id="LOCAL-00001" summary="Added firebase user login, register, forgot password.">
       <option name="closed" value="true" />

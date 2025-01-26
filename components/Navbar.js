@@ -1,4 +1,4 @@
-//components/Navbar.js
+// components/Navbar.js
 'use client';
 
 import React, { useState } from 'react';
@@ -30,21 +30,34 @@ const Navbar = () => {
   };
 
   const DrawerList = (
-    <List>
-      <ListItem button onClick={() => { setDrawerOpen(false); router.push('/homepage'); }}>
+    <List className={styles.drawerList}>
+      <ListItem
+        button
+        onClick={() => { setDrawerOpen(false); router.push('/homepage'); }}
+        className={styles.drawerItem}
+      >
         <ListItemText primary="Home" />
       </ListItem>
-      <ListItem button onClick={() => { setDrawerOpen(false); router.push('/profile'); }}>
+      <ListItem
+        button
+        onClick={() => { setDrawerOpen(false); router.push('/profile'); }}
+        className={styles.drawerItem}
+      >
         <ListItemText primary="Profile" />
       </ListItem>
-      <ListItem button onClick={() => {
-        setDrawerOpen(false);
-        handleLogout();
-      }}>
+      <ListItem
+        button
+        onClick={() => {
+          setDrawerOpen(false);
+          handleLogout();
+        }}
+        className={styles.logoutItem}
+      >
         <ListItemText primary="Logout" />
       </ListItem>
     </List>
   );
+
   return (
     <nav className={styles.navbar}>
       <div className={styles.logo}>
@@ -62,8 +75,8 @@ const Navbar = () => {
           </>
         ) : (
           <>
-            <Link href="/login">Login</Link>
-            <Link href="/register">Register</Link>
+            <Link href="/login" className={styles.navLink}>Login</Link>
+            <Link href="/register" className={styles.navLink}>Register</Link>
           </>
         )}
       </div>
