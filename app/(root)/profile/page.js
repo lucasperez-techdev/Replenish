@@ -15,6 +15,7 @@ export default function ProfilePage() {
     email: "",
     phone: "",
     profilePicture: "",
+    businessName: "",
     resourcesNeeded: [],
     resourcesHave: [],
   });
@@ -189,6 +190,16 @@ export default function ProfilePage() {
           />
         </div>
         <div>
+          <label className="block text-sm font-medium text-gray-700">Company/Org</label>
+          <input
+            type="text"
+            name="businessName"
+            value={profile.businessName}
+            onChange={handleChange}
+            className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
+          />
+        </div>
+        <div>
           <label className="block text-sm font-medium text-gray-700">Email</label>
           <input
             type="email"
@@ -297,9 +308,8 @@ export default function ProfilePage() {
         {/* --------------------- SAVE CHANGES BUTTON --------------------- */}
         <button
           onClick={handleSave}
-          className={`px-4 py-2 text-white font-semibold rounded-lg focus:outline-none focus:ring focus:ring-blue-300 ${
-            saving ? 'bg-blue-400 cursor-not-allowed' : 'bg-blue-500 hover:bg-blue-600'
-          }`}
+          className={`px-4 py-2 text-white font-semibold rounded-lg focus:outline-none focus:ring focus:ring-blue-300 ${saving ? 'bg-blue-400 cursor-not-allowed' : 'bg-blue-500 hover:bg-blue-600'
+            }`}
           disabled={saving}
         >
           {saving ? (
