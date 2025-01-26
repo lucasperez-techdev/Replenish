@@ -164,7 +164,7 @@ const Chatbot = () => {
             cursor: "pointer",
           }}
         >
-          Open Chat
+          Click here to open your ZSG companion
         </button>
       )}
     </div>
