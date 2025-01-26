@@ -1,4 +1,4 @@
-// app/(root)/homepage/page.js
+// app/homepage/page.js
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -27,24 +27,70 @@ const Homepage = () => {
 
   useEffect(() => {
     const users = [
-      { id: 1, name: 'John Doe' },
-      { id: 2, name: 'Jane Smith' },
-      { id: 3, name: 'Emily Johnson' },
-      { id: 4, name: 'Michael Brown' },
-      { id: 5, name: 'Sarah Wilson' },
-      { id: 6, name: 'Chris Davis' },
+      {
+        id: 1,
+        name: 'MLH',
+        resourcesNeeded: ['Financial Assistance', 'Business Mentorship'],
+        resourcesToOffer: ['Marketing Skills', 'Networking Opportunities'],
+      },
+      {
+        id: 2,
+        name: 'Converse',
+        resourcesNeeded: ['Web Development', 'SEO Optimization'],
+        resourcesToOffer: ['Graphic Design', 'Content Creation'],
+      },
+      {
+        id: 3,
+        name: 'Path To College',
+        resourcesNeeded: ['Legal Advice', 'Fundraising Strategies'],
+        resourcesToOffer: ['Event Planning', 'Project Management'],
+      },
+      {
+        id: 4,
+        name: 'Surefoot',
+        resourcesNeeded: ['Product Prototyping', 'Market Research'],
+        resourcesToOffer: ['Sales Expertise', 'Customer Insights'],
+      },
+      {
+        id: 5,
+        name: 'Bundle IQ',
+        resourcesNeeded: ['Technical Support', 'Data Analysis'],
+        resourcesToOffer: ['Social Media Management', 'Brand Strategy'],
+      },
+      {
+        id: 6,
+        name: 'Target',
+        resourcesNeeded: ['Team Building', 'Leadership Coaching'],
+        resourcesToOffer: ['Training Programs', 'Operational Processes'],
+      },
     ];
     setUsers(users);
-    // console.log('Mock Users:', mockUsers);
   }, []);
 
   if (!currentUser) return <p>Loading...</p>;
 
   // Function to render user cards
   const renderUserCards = (users) => {
-    return users.map(user => (
-      <div key={user.id} className={styles.card}> {/* styles.card */}
-        <h3>{user.name}</h3>
+    return users.map((user) => (
+      <div key={user.id} className={styles.card}>
+        <div className={styles.profilePicture}></div>
+        <div className={styles.cardContent}>
+          <h3>{user.name}</h3>
+          <div>
+            <h4>Resources Needed:</h4>
+            <ul>
+              {user.resourcesNeeded.map((resource, index) => (
+                <li key={index}>{resource}</li>
+              ))}
+            </ul>
+            <h4>Resources to Offer:</h4>
+            <ul>
+              {user.resourcesToOffer.map((resource, index) => (
+                <li key={index}>{resource}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </div>
     ));
   };
