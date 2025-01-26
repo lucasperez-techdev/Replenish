@@ -1,4 +1,4 @@
-# Zero-Sum Game
+# Zero-Sum
 - [Introduction](#introduction)
 - [Features](#features)
 - [Installation](#installation)
