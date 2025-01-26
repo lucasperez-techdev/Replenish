@@ -51,7 +51,7 @@ const Login = () => {
         {message.text && <Message message={message.text} type={message.type} onClose={() => setMessage({ text: '', type: '' })} />}
         <form onSubmit={handleLogin}>
           <div className={styles.formGroup}>
-            <Image src="/svgs/envelope.svg" alt="Envelope Icon" width={20} height={20} />
+            <Image src="/svgs/envelope.svg" alt="Envelope Icon" width={20} height={20} className={styles.icon} />
             <input
               type="email"
               id="loginEmail"
@@ -63,7 +63,7 @@ const Login = () => {
             <label htmlFor="loginEmail">Email Address</label>
           </div>
           <div className={styles.formGroup}>
-            <Image src="/svgs/lock.svg" alt="Lock Icon" width={20} height={20} />
+            <Image src="/svgs/lock.svg" alt="Lock Icon" width={20} height={20} className={styles.icon} />
             <input
               type="password"
               id="loginPassword"
