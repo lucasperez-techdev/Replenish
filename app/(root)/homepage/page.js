@@ -1,4 +1,4 @@
-// app/homepage/page.js
+// app/(root)/homepage/page.js
 'use client';
 
 import { useEffect, useState } from 'react';

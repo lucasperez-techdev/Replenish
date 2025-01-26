@@ -1,4 +1,4 @@
-// app/reset-password/page.js
+// app/(auth)/reset-password/page.js
 'use client';
 
 import { useState } from 'react';
