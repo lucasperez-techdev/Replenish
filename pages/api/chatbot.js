@@ -47,7 +47,7 @@ export default async function handler(req, res) {
         querySnapshot.forEach((doc) => {
           const user = doc.data();
           matchingUsers.push({
-            name: `${user.firstName} ${user.lastName}`,
+            name: `${user.businessName}`,
             resourcesHave: user.resourcesHave,
             resourcesNeeded: user.resourcesNeeded,
           });
