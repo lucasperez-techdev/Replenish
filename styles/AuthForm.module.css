@@ -54,7 +54,9 @@
   max-width: 80%;
   margin: 0 auto;
   line-height: 1.4;
+  font-weight: 700; /* Make it bold */
 }
+
 
 /* (Below are your existing classes that style the form) */
 .authForm {
@@ -86,6 +88,7 @@
   margin-bottom: 1.5rem;
   font-size: 1.8rem;
   color: #1a202c;
+  font-weight: 700;
 }
 
 /* Container for each form group */
@@ -129,6 +132,11 @@
   background-color: transparent;
   padding: 0 0.25rem;
 }
+
+.resetWrapper .authForm{
+  margin-top: -80px; /* or however far you want to move it up */
+}
+
 
 /* Active state for labels */
 .formGroup input:focus + label,
@@ -226,19 +234,21 @@
 /* Toggle authentication section */
 .toggleAuth {
   text-align: center;
+  font-weight: 700; /* Bold */
 }
 
 .toggleAuth p {
   margin-bottom: 0.5rem;
   color: #4a5568;
+  font-weight: 700; /* Bold */
 }
 
 .toggleAuth button {
   background: none;
   border: none;
   color: #6366f1;
+  font-weight: 700; /* Bold */
   cursor: pointer;
-  font-weight: 500;
   transition: color 0.3s;
 }
 
