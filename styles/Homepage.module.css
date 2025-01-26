@@ -37,7 +37,7 @@
   
 .card h3 {
     margin: 0;
-    margin-bottom: 1rem;
+
     font-size: 1.7rem;
     font-weight: bold;
     color: #333;
@@ -55,13 +55,14 @@
 .card ul {
     list-style-type: disc;
     margin: 0;
-    padding-left: 0.7rem;
+    padding-left: 15rem;
 }
 
 .card h4 {
     margin-top: 1rem;
     font-size: 1.1rem;
     color: black;
+    text-align: right;
 }
 
 .card li {
@@ -69,26 +70,27 @@
     font-size: 0.95rem;
     color: #333;
     text-align: right;
+    padding-right: 6rem;
 }
 
 .card-content ul {
   list-style-type: disc; 
   margin: 0;
-  padding: 0 1rem; 
-  text-align: right;
+  padding: 0 1.5rem; 
+  text-align: left;
 }
 
 .card-content ul li {
-  margin-left: 1rem;
+  margin-left: 0rem;
   margin-bottom: 0.5rem;
-  text-align: right;
+  text-align: left;
 }
 
 .card-content h4 {
   font-size: 1rem; 
   font-weight: bold;
   margin-bottom: 0.5rem;
-  text-align: right;
+  text-align: left;
 }
 
 .profile-picture {
