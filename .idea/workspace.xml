@@ -6,12 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="bdcc2e79-5efb-40b9-b2e1-3a5332e687b2" name="Changes" comment="Added firebase user login, register, forgot password.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(auth)/login/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/login/page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(auth)/register/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/register/page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(auth)/reset-password/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/reset-password/page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Chatbot.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Chatbot.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/AuthForm.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/AuthForm.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/Homepage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/Homepage.module.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +86,7 @@
       <workItem from="1737830838178" duration="96000" />
       <workItem from="1737830944011" duration="4888000" />
       <workItem from="1737855668351" duration="11388000" />
-      <workItem from="1737870454128" duration="21588000" />
+      <workItem from="1737870454128" duration="26144000" />
     </task>
     <task id="LOCAL-00001" summary="Added firebase user login, register, forgot password.">
       <option name="closed" value="true" />
