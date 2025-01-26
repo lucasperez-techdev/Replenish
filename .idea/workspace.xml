@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bdcc2e79-5efb-40b9-b2e1-3a5332e687b2" name="Changes" comment="Added firebase user login, register, forgot password.">
-      <change afterPath="$PROJECT_DIR$/components/FlipCard.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/FlipCard.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/(root)/homepage/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/(root)/homepage/page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/FlipCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/CompanyCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/FlipCard.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/CompanyCard.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/styles/Homepage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/Homepage.module.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -86,7 +85,7 @@
       <workItem from="1737830838178" duration="96000" />
       <workItem from="1737830944011" duration="4888000" />
       <workItem from="1737855668351" duration="11388000" />
-      <workItem from="1737870454128" duration="2346000" />
+      <workItem from="1737870454128" duration="3236000" />
     </task>
     <task id="LOCAL-00001" summary="Added firebase user login, register, forgot password.">
       <option name="closed" value="true" />

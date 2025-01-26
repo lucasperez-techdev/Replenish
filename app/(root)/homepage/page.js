@@ -6,12 +6,12 @@ import { auth, db } from '../../../firebase/firebaseConfig';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
 import styles from "../../../styles/Homepage.module.css";
-import FlipCard from '../../../components/FlipCard';
+import CompanyCard from '../../../components/CompanyCard';
 import { collection, getDocs } from 'firebase/firestore';
 
 const Homepage = () => {
   const [currentUser, setCurrentUser] = useState(null); // For authenticated user
-  const [users, setUsers] = useState([]); // For list of users
+  const [companies, setCompanies] = useState([]); // For list of companies
   const router = useRouter();
 
   // Handle authentication state
@@ -27,24 +27,24 @@ const Homepage = () => {
     return () => unsubscribe();
   }, [router]);
 
-  // Fetch users from Firestore
+  // Fetch companies from Firestore
   useEffect(() => {
-    const fetchUsers = async () => {
+    const fetchCompanies = async () => {
       try {
-        const usersCollection = collection(db, 'users');
-        const usersSnapshot = await getDocs(usersCollection);
-        const usersList = usersSnapshot.docs.map(doc => ({
+        const companiesCollection = collection(db, 'users');
+        const companiesSnapshot = await getDocs(companiesCollection);
+        const companiesList = companiesSnapshot.docs.map(doc => ({
           id: doc.id,
           ...doc.data()
         }));
-        setUsers(usersList);
+        setCompanies(companiesList);
       } catch (error) {
-        console.error("Error fetching users:", error);
+        console.error("Error fetching companies:", error);
       }
     };
 
     if (currentUser) {
-      fetchUsers();
+      fetchCompanies();
     }
   }, [currentUser]);
 
@@ -56,11 +56,11 @@ const Homepage = () => {
         Welcome, {currentUser.displayName || 'User'}!
       </h1>
       <h2 className={styles.subtitle}>
-        Potential traders:
+        Potential Collaborators:
       </h2>
       <div className={styles.grid}>
-        {users.map(user => (
-          <FlipCard key={user.id} user={user} />
+        {companies.map(company => (
+          <CompanyCard key={company.id} company={company} />
         ))}
       </div>
     </div>
