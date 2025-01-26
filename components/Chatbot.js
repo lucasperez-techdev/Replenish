@@ -1,12 +1,30 @@
-//components/Chatbot.js
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../firebase/firebaseConfig"; // Adjust the path as per your project structure
 
 const Chatbot = () => {
   const [messages, setMessages] = useState([]);
   const [userInput, setUserInput] = useState('');
-  const [isOpen, setIsOpen] = useState(true); // Track whether the chatbot is open or collapsed
+  const [isOpen, setIsOpen] = useState(false); // Start with the chatbot closed
+  const [isAuthenticated, setIsAuthenticated] = useState(false); // Track if the user is authenticated
+  const pathname = usePathname(); // Get the current route
+
+  // Check user authentication and set state
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setIsAuthenticated(!!user); // Set true if user is authenticated, otherwise false
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  // Only show chatbot if user is authenticated and on the homepage
+  if (!isAuthenticated || pathname !== "/homepage") {
+    return null; // Do not render chatbot
+  }
 
   const sendMessage = async () => {
     if (!userInput.trim()) return;
@@ -21,7 +39,7 @@ const Chatbot = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          message: `You are an AI assistant specializing in Social Good, Human Experience, Environment, and Sustainability. Please respond to user questions within these areas. Examples of relevant topics include: - Social Good: community development, philanthropy, social impact, diversity, equity, and inclusion. - Human Experience: well-being, mental health, quality of life, cultural enrichment, and accessibility. - Environment and Sustainability: recycling, renewable energy, climate change, sustainable practices, conservation, and reducing waste. If the user input: "${userInput}" clearly falls outside these categories, respond with: "Sorry, I cannot answer that. Please ask about Social Good, Human Experience, or Environment and Sustainability." Then, if the question does fall under one of the categories, please provide a detailed, structured response: "${userInput}". Do not include "*" symbols and make it short and just give me a simple paragraph or two.`,
+          message: `You are an AI assistant specializing in Social Good, Human Experience, Environment, and Sustainability. Please respond to user questions within these areas. Examples of relevant topics include: - Social Good: community development, philanthropy, social impact, diversity, equity, and inclusion. - Human Experience: well-being, mental health, quality of life, cultural enrichment, and accessibility. - Environment and Sustainability: recycling, renewable energy, climate change, sustainable practices, conservation, and reducing waste. If the user input: "${userInput}" clearly falls outside these categories, respond with: "Sorry, I cannot answer that. Please ask about Social Good, Human Experience, or the Environment and Sustainability." Then, if the question does fall under one of the categories, please provide a detailed, structured response: "${userInput}". Do not include "*" symbols and make it short and just give me a simple paragraph or two.`,
         }),
       });
 
@@ -39,7 +57,7 @@ const Chatbot = () => {
 
   return (
     <div style={{ position: "fixed", bottom: "20px", right: "20px", zIndex: 1000 }}>
-      {/* Chatbot Content */}
+      {/* Only show the chatbot if isOpen is true */}
       {isOpen ? (
         <div
           style={{
@@ -66,7 +84,7 @@ const Chatbot = () => {
               position: "relative", // For positioning the close button
             }}
           >
-            Hello I am ZSG, how can I assist you?
+            Hello, I am ZSG. How can I assist you?
 
             {/* Close Button */}
             <button
@@ -146,7 +164,7 @@ const Chatbot = () => {
             cursor: "pointer",
           }}
         >
-          Open Chat
+          Click here to open your ZSG companion
         </button>
       )}
     </div>

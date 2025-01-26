@@ -1,18 +1,17 @@
-// app/(root)/homepage/page.js
 'use client';
 
 import { useEffect, useState } from 'react';
 import { auth } from '../../../firebase/firebaseConfig';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
+import Chatbot from '../../../components/Chatbot';
 import styles from "../../../styles/Homepage.module.css";
 
 const Homepage = () => {
-  const [currentUser, setCurrentUser] = useState(null); // For authenticated user
-  const [users, setUsers] = useState([]); // For list of users
+  const [currentUser, setCurrentUser] = useState(null);
+  const [users, setUsers] = useState([]);
   const router = useRouter();
 
-  // Handle authentication state
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -35,15 +34,13 @@ const Homepage = () => {
       { id: 6, name: 'Chris Davis' },
     ];
     setUsers(users);
-    // console.log('Mock Users:', mockUsers);
   }, []);
 
   if (!currentUser) return <p>Loading...</p>;
 
-  // Function to render user cards
   const renderUserCards = (users) => {
-    return users.map(user => (
-      <div key={user.id} className={styles.card}> {/* styles.card */}
+    return users.map((user) => (
+      <div key={user.id} className={styles.card}>
         <h3>{user.name}</h3>
       </div>
     ));
@@ -51,14 +48,17 @@ const Homepage = () => {
 
   return (
     <div className={styles.container}>
-    <h1 style={{ textAlign: 'center', marginBottom: '0.5rem' }}>
-      Welcome, {currentUser.displayName || 'User'}!
-    </h1>
-    <h2 style={{ textAlign: 'center', marginBottom: '2rem' }}>
-      Potential traders:
-    </h2>
-    <div className={styles.grid}>{renderUserCards(users)}</div>
-  </div>
+      <h1 style={{ textAlign: 'center', marginBottom: '0.5rem' }}>
+        Welcome, {currentUser.displayName || 'User'}!
+      </h1>
+      <h2 style={{ textAlign: 'center', marginBottom: '2rem' }}>
+        Potential traders:
+      </h2>
+      <div className={styles.grid}>{renderUserCards(users)}</div>
+
+      {/* Render Chatbot */}
+      <Chatbot />
+    </div>
   );
 };
 
