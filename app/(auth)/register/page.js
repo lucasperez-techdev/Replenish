@@ -119,7 +119,7 @@ const Register = () => {
             onClose={() => setMessage({ text: '', type: '' })}
           />
         )}
-        <form onSubmit={handleRegistration}>
+        <form id="register" onSubmit={handleRegistration}>
           {/* First Name */}
           <div className={styles.formGroup}>
             <input
