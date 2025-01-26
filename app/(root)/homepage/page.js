@@ -5,14 +5,14 @@ import { useEffect, useState } from 'react';
 import { auth } from '../../../firebase/firebaseConfig';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
-import Chatbot from '../../../components/Chatbot';
 import styles from "../../../styles/Homepage.module.css";
 
 const Homepage = () => {
-  const [currentUser, setCurrentUser] = useState(null);
-  const [users, setUsers] = useState([]);
+  const [currentUser, setCurrentUser] = useState(null); // For authenticated user
+  const [users, setUsers] = useState([]); // For list of users
   const router = useRouter();
 
+  // Handle authentication state
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -69,45 +69,45 @@ const Homepage = () => {
 
   if (!currentUser) return <p>Loading...</p>;
 
+  // Function to render user cards
   const renderUserCards = (users) => {
     return users.map((user) => (
-      <div key={user.id} className={styles.card}>
+    <div key={user.id} className={styles.card}>
+      {/* Profile Picture */}
+      <div className={styles.profilePicture}></div>
+      <div className={styles.cardContent}>
+        {/* Company Name */}
         <h3>{user.name}</h3>
-        <div className={styles.profilePicture}></div>
-        <div className={styles.cardContent}>
-          <h3>{user.name}</h3>
-          <div>
-            <h4>Resources Needed:</h4>
-            <ul>
-              {user.resourcesNeeded.map((resource, index) => (
-                <li key={index}>{resource}</li>
-              ))}
-            </ul>
-            <h4>Resources to Offer:</h4>
-            <ul>
-              {user.resourcesToOffer.map((resource, index) => (
-                <li key={index}>{resource}</li>
-              ))}
-            </ul>
-          </div>
+        {/* Resources Lists */}
+        <div>
+          <h4>Resources Needed:</h4>
+          <ul>
+            {user.resourcesNeeded.map((resource, index) => (
+              <li key={index}>{resource}</li>
+            ))}
+          </ul>
+          <h4>Resources to Offer:</h4>
+          <ul>
+            {user.resourcesToOffer.map((resource, index) => (
+              <li key={index}>{resource}</li>
+            ))}
+          </ul>
         </div>
       </div>
+    </div>
     ));
   };
 
   return (
     <div className={styles.container}>
-      <h1 style={{ textAlign: 'center', marginBottom: '0.5rem' }}>
-        Welcome, {currentUser.displayName || 'User'}!
-      </h1>
-      <h2 style={{ textAlign: 'center', marginBottom: '2rem' }}>
-        Potential traders:
-      </h2>
-      <div className={styles.grid}>{renderUserCards(users)}</div>
-
-      {/* Render Chatbot */}
-      <Chatbot />
-    </div>
+    <h1 style={{ textAlign: 'center', marginBottom: '0.5rem' }}>
+      Welcome, {currentUser.displayName || 'User'}!
+    </h1>
+    <h2 style={{ textAlign: 'center', marginBottom: '2rem' }}>
+      Potential traders:
+    </h2>
+    <div className={styles.grid}>{renderUserCards(users)}</div>
+  </div>
   );
 };
 
