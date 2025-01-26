@@ -162,9 +162,10 @@ const Chatbot = () => {
             borderRadius: "10px",
             padding: "10px",
             cursor: "pointer",
+            fontWeight: "bold",
           }}
         >
-          Click here to open your ZSG companion
+          Click here to open your ZSG companion!
         </button>
       )}
     </div>

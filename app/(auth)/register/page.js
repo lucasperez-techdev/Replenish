@@ -138,7 +138,7 @@ const Register = () => {
           height={500}
           className={styles.largeLogo}
         />
-        <p className={styles.motto}>ZERO-SUM, WHERE BUSINESSES BENEFIT</p>
+        <p className={styles.motto}>ZERO-SUM, WHERE BUSINESSES BENEFIT.</p>
       </div>
 
       {/** RIGHT SECTION WITH FORM **/}
