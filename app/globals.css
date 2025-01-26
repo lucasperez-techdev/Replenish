@@ -2,6 +2,7 @@
    @import 'tailwindcss/base';
    @import 'tailwindcss/components';
    @import 'tailwindcss/utilities';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
 /* Reset and Base Styles */
 * {
   margin: 0;
@@ -9,11 +10,41 @@
   box-sizing: border-box;
 }
 
+/* Example in globals.css or a top-level file */
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700; /* Bold for headings */
+  margin-bottom: 0.5rem;
+}
+
+p, label, input, button, a, span {
+  font-weight: 400; /* Regular weight for normal text */
+}
+
+/* If you want form headers a bit bolder: */
+.formHeader {
+  font-weight: 700;
+  font-size: 1.8rem; /* Already in your code */
+}
+
+
+/* globals.css */
+
+/* Reset & Base Styles (already in your code) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* Replace your old font stack with Montserrat */
+  font-family: 'Montserrat', sans-serif;
+  /* You can also tweak line-height, color, etc. */
   background-color: #f4f6f8;
   color: #333;
 }
+
 
 a {
   color: inherit;

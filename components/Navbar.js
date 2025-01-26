@@ -7,7 +7,7 @@ import { useAuth } from '../context/AuthContext';
 import { auth } from '../firebase/firebaseConfig';
 import { signOut } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
-import { Button, Drawer, List, ListItem, ListItemText } from '@mui/material';
+import { Button, Drawer, List, ListItem, ListItemText, ListItemButton } from '@mui/material';
 import styles from '../styles/Navbar.module.css';
 
 const Navbar = () => {
@@ -30,33 +30,42 @@ const Navbar = () => {
   };
 
   const DrawerList = (
-    <List className={styles.drawerList}>
-      <ListItem
-        button
-        onClick={() => { setDrawerOpen(false); router.push('/homepage'); }}
-        className={styles.drawerItem}
+  <List className={styles.drawerList}>
+    <ListItem disablePadding className={styles.drawerItem}>
+      <ListItemButton
+        onClick={() => {
+          setDrawerOpen(false);
+          router.push('/homepage');
+        }}
       >
         <ListItemText primary="Home" />
-      </ListItem>
-      <ListItem
-        button
-        onClick={() => { setDrawerOpen(false); router.push('/profile'); }}
-        className={styles.drawerItem}
+      </ListItemButton>
+    </ListItem>
+
+    <ListItem disablePadding className={styles.drawerItem}>
+      <ListItemButton
+        onClick={() => {
+          setDrawerOpen(false);
+          router.push('/profile');
+        }}
       >
         <ListItemText primary="Profile" />
-      </ListItem>
-      <ListItem
-        button
+      </ListItemButton>
+    </ListItem>
+
+    <ListItem disablePadding className={styles.logoutItem}>
+      <ListItemButton
         onClick={() => {
           setDrawerOpen(false);
           handleLogout();
         }}
-        className={styles.logoutItem}
       >
         <ListItemText primary="Logout" />
-      </ListItem>
-    </List>
-  );
+      </ListItemButton>
+    </ListItem>
+  </List>
+);
+
 
   return (
     <nav className={styles.navbar}>

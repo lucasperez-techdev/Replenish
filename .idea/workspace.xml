@@ -5,12 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bdcc2e79-5efb-40b9-b2e1-3a5332e687b2" name="Changes" comment="Added firebase user login, register, forgot password.">
+      <change afterPath="$PROJECT_DIR$/app/api/testEmail/route.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/Zero-Sum.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/ZeroSum.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(auth)/login/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/login/page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(auth)/register/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/register/page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(root)/profile/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/(root)/profile/page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/AuthForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/matchResources/route.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Navbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Sidebar.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/Navbar.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/Navbar.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/AuthForm.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/AuthForm.module.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,28 +49,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;KalimBranch&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/kalim/PycharmProjects/Replenish&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\PyCharm 2023.3.2\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "KalimBranch",
+    "last_opened_file_path": "C:/Users/kalim/PycharmProjects/Replenish/public/images",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\PyCharm 2023.3.2\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\kalim\PycharmProjects\Replenish\public\images" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\kalim\PycharmProjects\Replenish\public" />
+      <recent name="C:\Users\kalim\PycharmProjects\Replenish\images" />
       <recent name="C:\Users\kalim\PycharmProjects\Replenish\app\api" />
       <recent name="C:\Users\kalim\PycharmProjects\Replenish\public\svgs" />
       <recent name="C:\Users\kalim\OneDrive\Documents\GitHub\replenish\app\(auth)" />
-      <recent name="C:\Users\kalim\OneDrive\Documents\GitHub\replenish\app\(root)" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -87,7 +96,7 @@
       <workItem from="1737830838178" duration="96000" />
       <workItem from="1737830944011" duration="4888000" />
       <workItem from="1737855668351" duration="11388000" />
-      <workItem from="1737870454128" duration="9024000" />
+      <workItem from="1737870454128" duration="18304000" />
     </task>
     <task id="LOCAL-00001" summary="Added firebase user login, register, forgot password.">
       <option name="closed" value="true" />
