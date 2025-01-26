@@ -7,7 +7,7 @@
 .title {
     text-align: center;
     margin-bottom: 2rem;
-    color:#155;
+    color: #000;
 }
   
 .grid {
@@ -20,49 +20,81 @@
 }
   
 .card {
+    display: flex;
+    flex-direction: column;
     background: #f9f9f9;
     padding: 2rem;
-    text-align: center;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     min-width: 200px;
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .card:hover {
-    transform: translateY(-5px); /* Move card up slightly on hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slightly larger shadow on hover */
+    transform: translateY(-5px); /*move card on hover*/
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /*larger shadow on hover*/
   }
   
 .card h3 {
     margin: 0;
-    font-size: 1rem;
+    margin-bottom: 1rem;
+    font-size: 1.7rem;
+    font-weight: bold;
+    color: #333;
+    text-align: left;
 }
 
-/* h1 {
-    text-align: center;
-    margin-bottom: 0.5rem;
+.card-content {
+    display: flex; /* Flexbox for alignment */
+  flex-direction: column; /* Stack lists vertically */
+  align-items: flex-end; /* Align lists to the right */
+  width: 100%; /* Allow content to use full width */
+  text-align: right;
 }
-
-.subtitle {
-    text-align: center;
-    margin-bottom: 2rem;
-} */
 
 .card ul {
     list-style-type: disc;
     margin: 0;
-    padding-left: 1.5rem;
+    padding-left: 0.7rem;
 }
 
 .card h4 {
     margin-top: 1rem;
-    font-size: 1rem;
-    color: #555;
+    font-size: 1.1rem;
+    color: black;
 }
 
 .card li {
     margin-bottom: 0.5rem;
     font-size: 0.95rem;
     color: #333;
+    text-align: right;
 }
+
+.card-content ul {
+  list-style-type: disc; 
+  margin: 0;
+  padding: 0 1rem; 
+  text-align: right;
+}
+
+.card-content ul li {
+  margin-left: 1rem;
+  margin-bottom: 0.5rem;
+  text-align: right;
+}
+
+.card-content h4 {
+  font-size: 1rem; 
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  text-align: right;
+}
+
+.profile-picture {
+    width: 80px; 
+    height: 80px;
+    border-radius: 50%;
+    background-color: #00ffd9; /*placeholder color*/
+    margin-right: 1.5rem;
+  }
